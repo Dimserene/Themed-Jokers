@@ -10,16 +10,6 @@
 ----------------------------------------------
 -------------------UTIL-----------------------
 
-
-
-local contractjoker ={
-    'j_combatacesoldier',
-    'j_combatacemercenary',
-    'j_combatacegeneral',
-    'j_combatacesupplies',
-    'j_combatacesecretagent',
-    'j_combatacepromotion'
-}
 local cosmosjoker ={
     'j_cosmicvirgo',
     'j_cosmicpisces',
@@ -39,14 +29,6 @@ local mischiefjoker ={
 
 
 local localization = {
-    combatacedeck = {
-        name = "Combat Ace Conquest",
-        text = {
-        "Start the game with one",
-        "{C:attention}Combat Ace - Soldier and",
-        "{C:attention}Combat Ace - Recruiter"
-        }        
-    },
     cosmicdeck = {
         name = "Cosmic Constellation",
         text = {
@@ -66,11 +48,6 @@ local localization = {
 
 
 local decks = {
-    combatacedeck = {
-        name = "Combat Ace Conquest",
-        config = { combatacestart = true},
-        sprite = { x = 0, y = 0 }
-    },
     cosmicdeck = {
         name = "Cosmic Constellation",
         config = { cosmicstart = true},
@@ -86,19 +63,6 @@ local decks = {
 local Backapply_to_runRef = Back.apply_to_run
 function Back.apply_to_run(arg_56_0)
     Backapply_to_runRef(arg_56_0)
-    if arg_56_0.effect.config.combatacestart then
-        G.E_MANAGER:add_event(Event({
-            func = function()
-                local card = create_card('Joker', G.jokers, nil, nil, nil, nil, 'j_combatacesoldier', nil)
-                card:add_to_deck()
-                G.jokers:emplace(card)
-                local card = create_card('Joker', G.jokers, nil, nil, nil, nil, 'j_combatacerecruiter', nil)
-                card:add_to_deck()
-                G.jokers:emplace(card)
-                return true
-            end
-        }))
-    end
     if arg_56_0.effect.config.mischiefstart then
         G.E_MANAGER:add_event(Event({
             func = function()
