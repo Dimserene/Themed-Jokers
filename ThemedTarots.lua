@@ -34,14 +34,6 @@ function checkforcosmic()
     return false
 end
 
-local contractjoker ={
-    'j_combatacesoldier',
-    'j_combatacemercenary',
-    'j_combatacegeneral',
-    'j_combatacesupplies',
-    'j_combatacesecretagent',
-    'j_combatacepromotion'
-}
 local cosmosjoker ={
     'j_cosmiccapricorn',
     'j_cosmicpisces',
@@ -91,36 +83,6 @@ local tarots = {
                 G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
                     play_sound('timpani')
                     addjoker(mischiefjoker[getjokerfromlist(mischiefjoker)])
-                    self:juice_up(0.3, 0.5)
-                    return true end }))
-                delay(0.6)
-            end
-        end      
-	},
-    contract = {
-        name = "The Contract",
-        text = {
-            "Creates a random",
-            "{C:attention}Combat Ace Joker{}.",
-            "{C:inactive}(Must have room)"
-		},
-		config = {},
-		pos = { x = 0, y = 2 },
-        cost = 3,
-        cost_mult = 1,
-        effect=nil,
-        consumable=true,
-        discovered=true,
-        can_use = function() 
-            if  #G.jokers.cards < G.jokers.config.card_limit then
-                return true
-            end          
-        end,
-        use = function(self, area, copier)
-            if self.ability.name == 'The Contract' then
-                G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-                    play_sound('timpani')
-                    addjoker(contractjoker[getjokerfromlist(contractjoker)])
                     self:juice_up(0.3, 0.5)
                     return true end }))
                 delay(0.6)
